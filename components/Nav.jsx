@@ -1,10 +1,12 @@
-import ModalAuth from './ModalAuth';
+import ModalSignIn from './ModalSignIn';
+import ModalSignUp from './ModalSignUp';
 
 const Nav = () => {
 
   return (
     <nav>
-      <ModalAuth />
+      <ModalSignIn />
+      <ModalSignUp />
     </nav>
   );
 };

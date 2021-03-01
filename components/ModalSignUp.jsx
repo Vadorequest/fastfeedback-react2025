@@ -1,20 +1,23 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import AuthForm from './AuthForm';
 
-const ModalAuth = () => {
+/**
+ * Creating new user account
+ */
+const ModalSignUp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Button onClick={onOpen}>Auth</Button>
+      <Button onClick={onOpen}>Sign up</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Authentication</ModalHeader>
+          <ModalHeader>Sign up</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <AuthForm />
+            <AuthForm confirmPassword={true} />
           </ModalBody>
 
           <ModalFooter>
@@ -28,4 +31,4 @@ const ModalAuth = () => {
   );
 };
 
-export default ModalAuth;
+export default ModalSignUp;
