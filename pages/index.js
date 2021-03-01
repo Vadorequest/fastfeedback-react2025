@@ -1,3 +1,4 @@
+import { Button } from '@chakra-ui/react';
 import Head from 'next/head';
 import { Fragment } from 'react';
 import { useAuth } from '../lib/auth';
@@ -20,11 +21,11 @@ const Home = () => {
           Current user: <code>{auth?.user ? auth.user.email : 'None'}</code>
         </p>
         {auth?.user ? (
-          <button onClick={(e) => auth.signout()}>Sign Out</button>
+          <Button onClick={(e) => auth.signout()}>Sign Out</Button>
         ) : (
           <Fragment>
-            <button onClick={(e) => auth.signinWithGithub()}>Sign In (GitHub)</button>
-            <button onClick={(e) => auth.signinWithEmailPassword()}>Sign In (Email)</button>
+            <Button onClick={(e) => auth.signinWithGithub()}>Sign In (GitHub)</Button>
+            <Button onClick={(e) => auth.signinWithEmailPassword()}>Sign In (Email)</Button>
           </Fragment>
         )}
       </main>
