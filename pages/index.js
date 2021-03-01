@@ -1,6 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import Head from 'next/head';
 import { Fragment } from 'react';
+import Nav from '../components/Nav';
 import { useAuth } from '../lib/auth';
 
 const Home = () => {
@@ -13,6 +14,8 @@ const Home = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Nav />
 
       <main>
         <h1 className="title">Fast Feedback</h1>
