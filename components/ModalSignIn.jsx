@@ -18,6 +18,7 @@ const ModalSignIn = () => {
           <ModalCloseButton />
           <ModalBody>
             <AuthForm
+              isSignIn={true}
               closeModal={onClose}
             />
           </ModalBody>

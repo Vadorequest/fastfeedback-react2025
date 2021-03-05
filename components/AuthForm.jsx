@@ -5,21 +5,35 @@ import { useAuth } from '../lib/auth';
 
 const AuthForm = (props) => {
   const {
-    confirmPassword = false,
+    isSignIn,
     closeModal,
   } = props;
   const [email, setEmail] = useState(undefined);
   const [password, setPassword] = useState(undefined);
+  const [confirmPassword, setConfirmPassword] = useState(undefined);
   const [loginError, setLoginError] = useState(undefined);
   const auth = useAuth();
 
   const onSubmit = async (event) => {
     try {
-      const result = await auth.signinWithEmailPassword(email, password);
-      console.log('result', result);
-      setLoginError(undefined);
-      closeModal();
+      if (!isSignIn) {
+        if (password === confirmPassword) {
+          // Create account
+          const result = await auth.createUser(email, password);
+          console.log('result', result);
+          setLoginError(undefined);
+          closeModal();
+        } else {
+          setLoginError(new Error('Les deux mots de passe ne sont pas identiques'));
+        }
 
+      } else {
+        // Login existing user
+        const result = await auth.signinWithEmailPassword(email, password);
+        console.log('result', result);
+        setLoginError(undefined);
+        closeModal();
+      }
     } catch (e) {
       setLoginError(e);
     }
@@ -49,13 +63,14 @@ const AuthForm = (props) => {
       </Center>
 
       {
-        confirmPassword && (
+        !isSignIn && (
           <Center mb="25px" mt="25px">
             <FormControl isRequired maxWidth="50%">
               <FormLabel>Confirm password</FormLabel>
               <Input
                 type={'password'}
                 placeholder="Awesome password"
+                onChange={(event) => setConfirmPassword(event.target.value)}
               />
               <FormErrorMessage>Error message</FormErrorMessage>
             </FormControl>

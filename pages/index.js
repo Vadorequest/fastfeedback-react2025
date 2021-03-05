@@ -6,7 +6,6 @@ import { useAuth } from '../lib/auth';
 
 const Home = () => {
   const auth = useAuth();
-  // window.createFakeUser = auth?.createFakeUser;
 
   return (
     <div className="container">
