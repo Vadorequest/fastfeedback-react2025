@@ -17,7 +17,10 @@ const ModalSignUp = () => {
           <ModalHeader>Sign up</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <AuthForm confirmPassword={true} />
+            <AuthForm
+              confirmPassword={true}
+              closeModal={onClose}
+            />
           </ModalBody>
 
           <ModalFooter>

@@ -17,7 +17,9 @@ const ModalSignIn = () => {
           <ModalHeader>Sign in</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <AuthForm  />
+            <AuthForm
+              closeModal={onClose}
+            />
           </ModalBody>
 
           <ModalFooter>
