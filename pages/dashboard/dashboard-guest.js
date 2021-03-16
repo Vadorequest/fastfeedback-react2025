@@ -1,10 +1,8 @@
 import { MoonIcon } from '@chakra-ui/icons';
 import { Avatar, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, Flex, Heading, Link, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
-import ModalAddSite from '../../components/ModalAddSite';
 
 const Dashboard = () => {
-
   return (
     <Box
       as={'main'}
@@ -81,13 +79,15 @@ const Dashboard = () => {
               >
                 <Box>
                   <Heading as="h2" size="sm">
-                    You don't have any site yet!
+                    Get feedback on your site instantly.
                   </Heading>
                 </Box>
                 <Text mt={2} mb={2}>
-                  Nothing easier! Just add one :)
+                  Start today, then grow with us!
                 </Text>
-                <ModalAddSite />
+                <Button variant="solid" size="md" mt={4} mb={4}>
+                  Upgrade to Starter
+                </Button>
               </Flex>
             </Flex>
           </Container>
