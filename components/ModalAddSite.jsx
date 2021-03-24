@@ -15,12 +15,14 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useAuth } from '../lib/auth';
 import { createSite } from '../lib/db';
 
 /**
  * Add a new site
  */
 const ModalAddSite = () => {
+  const auth = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, watch, errors } = useForm();
   const toast = useToast({
@@ -33,7 +35,7 @@ const ModalAddSite = () => {
   const onSubmit = async (formData, event) => {
     console.log(formData);
     try {
-      await createSite(formData.name, formData.url);
+      await createSite(formData.name, formData.url, auth?.user);
       toast({
         title: `Success`,
         description: `Your new site "${formData.name}" has been created!`,
