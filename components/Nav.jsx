@@ -1,9 +1,9 @@
-import { Link as ChakraLink } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import { Fragment } from 'react';
 import { useAuth } from '../lib/auth';
 import ModalSignIn from './ModalSignIn';
 import ModalSignUp from './ModalSignUp';
-import NextLink from 'next/link'
 
 const Nav = () => {
   const auth = useAuth();
@@ -16,7 +16,12 @@ const Nav = () => {
             <NextLink
               href="/dashboard"
             >
-              Dashboard
+              <Button
+                variant={'solid'}
+                colorScheme="pink"
+              >
+                Dashboard
+              </Button>
             </NextLink>
           </Fragment>
         ) : (
