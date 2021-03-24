@@ -8,6 +8,15 @@ const Dashboard = () => {
   const auth = useAuth();
   console.log('auth', auth)
 
+  if(!auth.user){
+    // Not connected
+    return (
+      <div>
+        Fuck off.
+      </div>
+    )
+  }
+
   return (
     <Box
       as={'main'}
