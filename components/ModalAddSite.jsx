@@ -35,7 +35,7 @@ const ModalAddSite = () => {
   const onSubmit = async (formData, event) => {
     console.log(formData);
     try {
-      await createSite(formData.name, formData.url, auth?.user);
+      await createSite(formData, auth?.user);
       toast({
         title: `Success`,
         description: `Your new site "${formData.name}" has been created!`,
