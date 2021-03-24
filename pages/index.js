@@ -22,14 +22,16 @@ const Home = () => {
         <p className="description">
           Current user: <code>{auth?.user ? auth.user.email : 'None'}</code>
         </p>
-        {auth?.user ? (
-          <Button onClick={(e) => auth.signout()}>Sign Out</Button>
-        ) : (
-          <Fragment>
-            <Button onClick={(e) => auth.signinWithGithub()}>Sign In (GitHub)</Button>
-            <Button onClick={(e) => auth.signinWithEmailPassword()}>Sign In (Email)</Button>
-          </Fragment>
-        )}
+        {
+          auth?.user ? (
+            <Button onClick={(e) => auth.signout()}>Sign Out</Button>
+          ) : (
+            <Fragment>
+              <Button onClick={(e) => auth.signinWithGithub()}>Sign In (GitHub)</Button>
+              <Button onClick={(e) => auth.signinWithEmailPassword()}>Sign In (Email)</Button>
+            </Fragment>
+          )
+        }
       </main>
 
       <footer>
