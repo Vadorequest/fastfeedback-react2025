@@ -2,8 +2,11 @@ import { MoonIcon } from '@chakra-ui/icons';
 import { Avatar, Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, Container, Flex, Heading, Link, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import ModalAddSite from '../../components/ModalAddSite';
+import { useAuth } from '../../lib/auth';
 
 const Dashboard = () => {
+  const auth = useAuth();
+  console.log('auth', auth)
 
   return (
     <Box
