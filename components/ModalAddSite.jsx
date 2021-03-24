@@ -11,6 +11,7 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -22,11 +23,33 @@ import { createSite } from '../lib/db';
 const ModalAddSite = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, watch, errors } = useForm();
+  const toast = useToast();
 
   const onSubmit = async (formData, event) => {
     console.log(formData);
-      const x = await createSite(formData.name, formData.url);
-      console.log('x', x);
+    try {
+      await createSite(formData.name, formData.url);
+      toast({
+        title: `Success`,
+        description: `Your new site "${formData.name}" has been created!`,
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+        position: 'bottom-right',
+      });
+      onClose();
+
+    } catch (e) {
+      console.error(e);
+      toast({
+        title: `Error`,
+        description: e.message,
+        status: 'error',
+        duration: null, // Infinite
+        isClosable: true,
+        position: 'bottom-right',
+      });
+    }
   };
 
   const onFailure = (data, e) => {
