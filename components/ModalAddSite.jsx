@@ -23,7 +23,12 @@ import { createSite } from '../lib/db';
 const ModalAddSite = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, watch, errors } = useForm();
-  const toast = useToast();
+  const toast = useToast({
+    status: 'success',
+    duration: 4000,
+    isClosable: true,
+    position: 'bottom-right',
+  });
 
   const onSubmit = async (formData, event) => {
     console.log(formData);
@@ -32,10 +37,6 @@ const ModalAddSite = () => {
       toast({
         title: `Success`,
         description: `Your new site "${formData.name}" has been created!`,
-        status: 'success',
-        duration: 4000,
-        isClosable: true,
-        position: 'bottom-right',
       });
       onClose();
 
@@ -46,8 +47,6 @@ const ModalAddSite = () => {
         description: e.message,
         status: 'error',
         duration: null, // Infinite
-        isClosable: true,
-        position: 'bottom-right',
       });
     }
   };
